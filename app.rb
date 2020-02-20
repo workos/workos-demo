@@ -9,8 +9,8 @@ require 'faker'
 
 
 get '/' do
-  company_name = Faker::Internet.domain_word
-  domain = Faker::Internet.domain_name(domain: company_name)
+  company_name = params['company'] || Faker::Internet.domain_word
+  domain = company_name + '.com'
   @current_user = {
     id: SecureRandom.uuid,
     email: "demo@#{domain}",
