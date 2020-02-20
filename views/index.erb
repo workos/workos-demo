@@ -1,0 +1,44 @@
+<div class='content'>
+  <form class="pure-form pure-form-aligned">
+    <fieldset>
+        <div class="pure-control-group">
+            <label for="email">Email Address</label>
+            <input id="email" type="email" value="<%= @current_user[:email] %>" placeholder="Email Address">
+        </div>
+
+        <div class="pure-control-group">
+            <label for="password">New Password</label>
+            <input id="password" type="password">
+        </div>
+
+        <div class="pure-control-group">
+          <label for="password">Confirm New Password</label>
+          <input id="password" type="password">
+        </div>
+
+        <div class="pure-control-group">
+          <label for="foo">Configure SSO</label>
+          <span 
+            class='workos-container'
+            data-prop-domain='<%= @current_user.dig(:account, :domain) %>'
+            data-prop-name='<%= @current_user.dig(:account, :name) %>'
+            data-prop-project-id='<%= ENV['WORKOS_PROJECT_ID'] %>'
+            data-prop-publishable-key="<%= ENV['WORKOS_PUBLISHABLE_KEY'] %>"
+          ></span>
+        </div>
+
+        <div class="pure-controls">
+          <button type="submit" class="pure-button pure-button-secondary">Save</button>
+        </div>
+    </fieldset>
+</form>
+</div>
+<script type='text/javascript'>
+  document.addEventListener('workos:providerLinked', function (event){
+    console.log(event.detail)
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", '/confirm', true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.send("token=" + event.detail.token);
+  })
+</script>
