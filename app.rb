@@ -6,8 +6,6 @@ require 'workos'
 require 'securerandom'
 require 'faker'
 
-
-
 get '/' do
   company_name = params['company'] || Faker::Internet.domain_word
   domain = company_name + '.com'
@@ -27,11 +25,7 @@ get '/' do
 end
 
 post '/confirm' do
-  result = WorkOS::SSO.promote_draft_connection(
+  WorkOS::SSO.promote_draft_connection(
     token: params['token'],
   )
-
-  puts result
-
-  result
 end
