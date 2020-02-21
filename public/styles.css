@@ -1,6 +1,7 @@
 body {
   color: #777;
   background-color: #f7f7f7;
+  font-family: 'SF UI Display', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
 }
 
 .pure-img-responsive {
