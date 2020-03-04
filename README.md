@@ -81,7 +81,7 @@ post '/confirm' do
 end
 ```
 
-See the relevant documentation in our Node, Go, Python or Ruby SDK.
+See the relevant documentation in our (Node)[https://github.com/workos-inc/workos-node], (Go)[https://github.com/workos-inc/workos-go], (Python)[https://github.com/workos-inc/workos-python] or (Ruby)[https://github.com/workos-inc/workos-ruby] SDK.
 
 ### Try it Yourself
 
