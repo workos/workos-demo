@@ -4,5 +4,5 @@ source 'https://rubygems.org'
 
 gem 'sinatra'
 gem 'sinatra-contrib'
-gem 'workos', git: 'https://github.com/workos-inc/workos-ruby', branch: 'master'
+gem 'workos', '0.1.1'
 gem 'faker'
