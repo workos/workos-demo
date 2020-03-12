@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/workos-inc/workos-ruby
-  revision: 320835db73fe43c219afdbdbc1739701ff9f51d8
-  branch: sbauch/add-draft-connection-promotion
+  revision: bf4da2c60276117d6a47a9c6118e2e0036f00032
+  branch: master
   specs:
     workos (0.1.1)
       sorbet-runtime (~> 0.5)
@@ -9,7 +9,7 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    backports (3.16.1)
+    backports (3.17.0)
     concurrent-ruby (1.1.6)
     faker (2.10.2)
       i18n (>= 1.6, < 2)
@@ -34,7 +34,7 @@ GEM
       rack-protection (= 2.0.8.1)
       sinatra (= 2.0.8.1)
       tilt (~> 2.0)
-    sorbet-runtime (0.5.5376)
+    sorbet-runtime (0.5.5434)
     tilt (2.0.10)
 
 PLATFORMS
