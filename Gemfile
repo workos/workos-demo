@@ -4,5 +4,5 @@ source 'https://rubygems.org'
 
 gem 'sinatra'
 gem 'sinatra-contrib'
-gem 'workos', git: 'https://github.com/workos-inc/workos-ruby', branch: 'sbauch/add-draft-connection-promotion'
+gem 'workos', git: 'https://github.com/workos-inc/workos-ruby', branch: 'master'
 gem 'faker'
