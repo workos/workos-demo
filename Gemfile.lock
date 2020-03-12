@@ -1,11 +1,3 @@
-GIT
-  remote: https://github.com/workos-inc/workos-ruby
-  revision: bf4da2c60276117d6a47a9c6118e2e0036f00032
-  branch: master
-  specs:
-    workos (0.1.1)
-      sorbet-runtime (~> 0.5)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -36,6 +28,8 @@ GEM
       tilt (~> 2.0)
     sorbet-runtime (0.5.5434)
     tilt (2.0.10)
+    workos (0.1.1)
+      sorbet-runtime (~> 0.5)
 
 PLATFORMS
   ruby
@@ -44,7 +38,7 @@ DEPENDENCIES
   faker
   sinatra
   sinatra-contrib
-  workos!
+  workos (= 0.1.1)
 
 BUNDLED WITH
    2.1.2
