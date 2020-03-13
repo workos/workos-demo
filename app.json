@@ -1,16 +1,16 @@
 {
-  "name": "WorkOS IdP Link Demo",
-  "description": "A Sinatra app showing how to use WorkOS IdP Link",
-  "repository": "https://github.com/workos-inc/ruby-idp-link-example",
+  "name": "WorkOS.js Demo",
+  "description": "A demo app to demonstrate how to embed WorkOS.js for users to configure SSO",
+  "repository": "https://github.com/workos-inc/workosjs-demo",
   "env": {
     "WORKOS_KEY": {
       "description": "Your WorkOS Secret API Key from the WorkOS dashboard"
     },
-    "WORKOS_PROJECT_ID": {
-      "description": "Your WorkOS Project ID from the WorkOS dashboard"
-    },
     "WORKOS_PUBLISHABLE_KEY": {
       "description": "Your WorkOS Publishable API Key from the WorkOS dashboard"
+    },
+    "WORKOS_PROJECT_ID": {
+      "description": "Your WorkOS Project ID from the WorkOS dashboard"
     }
   }
 }
