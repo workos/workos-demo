@@ -1,28 +1,17 @@
-# IdP Link
+# workosjs-demo
 
-WorkOS offers a Javascript based embeddable widget that allows your Enterprise users to configure their Single Sign-On Identity Provider themselves. Using IdP Link allows you to reduce the back and forth between your team and your new Enterprise customer, getting the Enterprise onboarded quicker and using your application.
+An example Sinatra app demonstrating how onboarding an Enterprise may work utilizing the WorkOS.js embed.
 
-![alt text](./IdPLink.gif)
+![WorkOS.js embed](./WorkOSjs.gif)
 
-
-### Configuring Identity Providers for WorkOS SSO
-
-Whenever you need to onboard a new Enterprise, you'll need to exchange some information with the Enterprise to set up their SSO Identity Provider. You'll create a secure handshake between your application and the Enterprise's Identity Provider via WorkOS.
-
-First, WorkOS will generate and you'll provide an Enterprise with an Assertion Consumer Service (ACS) URL. This tells the IdP where to redirect the Enterprise user with an authentication response when they wish to sign in to your app. WorkOS provides this value to you, and you must provide it to the Enterprise.
-
-Next, the Enterprise must create and configure your application in their Identity Provider. They'll use the ACS URL you provide, as well as some other pieces of information specific to the provider that WorkOS will also provide as needed.
-
-Once complete, the Enterprise will have all of the information needed to finish configuring the IdP via WorkOS. The Enterprise can relay this information to your team, who can then use that information to complete the IdP configuration on the WorkOS dashboard.
-
-Instead, this repository demonstrates how to use WorkOS IdP Link to allow the Enterprise to enter this information themselves.
+For more information, check out the WorkOS.js documentation [here](http://docs.workos.com/sso/embed-workosjs)
 
 ### Installation
 
-WorkOS IdP Link is available as a Javascript embed via the WorkOS CDN. WorkOS is always adding new Identity Providers and keeping the embed updated, so it's important you include the script from the WorkOS CDN as opposed to copying it into your codebase. Include the following script tag on your website:
+WorkOS.js is available as a Javascript embed via the WorkOS CDN. WorkOS is always adding new Identity Providers and keeping the embed updated, so it's important you include the script from the WorkOS CDN as opposed to copying it into your codebase. Include the following script tag on your website:
 
 ```html
-<script async type="text/javascript" src="https://cdn.workos.com/idp-link.min.js"</script>
+<script async type="text/javascript" src="https://js.workos.com/v1"</script>
 
 ```
 
@@ -31,18 +20,19 @@ Then add an element to your DOM with the class `workos-container`
 ```html
 <div 
   class='workos-container'
-  data-prop-domain='CURRENT-USER-DOMAIN'
-  data-prop-name='CURRENT-USER-COMPANY-NAME'
   data-prop-project-id='WORKOS_PROJECT_ID'
   data-prop-publishable-key='WORKOS_PUBLISHABLE_KEY'
+  data-prop-domain='CURRENT_USER_DOMAIN'
+  data-prop-name='CURRENT_USER_COMPANY_NAME'
+  data-prop-app-name='YOUR_COMPANY_NAME'
 />
 ```
 
-When the IdP Link loads and executes, this element will be replaced by a Button that launches a modal for configuring an Identity Provider.
+When the WorkOS.js embed loads and executes, this element will be replaced by a Button that launches a modal for configuring an Identity Provider.
 
 ### Data props
 
-Pass information into WorkOS IdP Link with _data attributes_. The attributes must be kebab-cased.
+Pass information into the WorkOS.js embed with _data attributes_.
 
 | Attribute                 | Required? | Value                                                    |
 |---------------------------|-----------|----------------------------------------------------------|
@@ -50,15 +40,15 @@ Pass information into WorkOS IdP Link with _data attributes_. The attributes mus
 | data-prop-publishable-key | true      | Your Publishable Key from the [WorkOS Dashboard](https://dashboard.workos.com/api-keys)           |
 | data-prop-domain          | true      | The primary domain for the current Enterprise account    |
 | data-prop-name            | true      | An identifier string for the Enterprise account          |
-| data-prop-app-name        | true      | The name of your application for display within IdP Link |
+| data-prop-app-name        | true      | The name of your application for display within the WorkOS.js embed |
 
-### IdP Link Confirmations
+### WorkOS.js Confirmations
 
-Calls made to the WorkOS API via IdP Link use your Publishable Key. The Publishable Key security model allows you to expose this key on the frontend of your application. But we don't want just _anyone_ to be able to configure SSO for your application should the key be leaked to a bad actor.
+Calls made to the WorkOS API via the WorkOS.js embed use your Publishable Key. The Publishable Key security model allows you to expose this key on the frontend of your application. But we don't want just _anyone_ to be able to configure SSO for your application should the key be leaked to a bad actor.
 
-In order to keep your application secure, while making IdP Configuration easy for you and the Enterprise, **actions taken from inside IdP Link must be confirmed with a server-side API call**.
+In order to keep your application secure, while making IdP Configuration easy for you and the Enterprise, **actions taken within the WorkOS.js embed must be confirmed with a server-side API call**.
 
-IdP Link will dispatch a custom event to the parent window when an Enterprise configures an IdP. This event `'workos:providerLinked'` will include a `token` that you must pass to your back end. Subscribe to this event, and pass the token to your API.
+WorkOS.js will dispatch a custom event to the parent window when an Enterprise configures an IdP. This event, `'workos:providerLinked'`, will include a `token` that you must pass to your back end. Subscribe to this event, and pass the token to your API.
 
 ```html
 <script type='text/javascript'>
@@ -85,10 +75,10 @@ See the relevant documentation in our (Node)[https://github.com/workos-inc/worko
 
 ### Try it Yourself
 
-Ready to play with IdP Link to see how it works? Go ahead and deploy a version of this Demo App to Heroku. You'll need your Project ID, Publishable Key and Secret Key from the WorkOS Dashboard.
+Ready to play with the WorkOS.js embed to see how it works? Go ahead and deploy a version of this Demo App to Heroku. You'll need your Project ID, Publishable Key and Secret Key from the WorkOS Dashboard.
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-In order to test SSO sign-ons for Identity Providers configured through IdP Link, you'll need an account with an IdP. Get in touch with WorkOS, we're happy to provision you an account in our `foo-corp.com` Okta instance, and can walk through a full implentation with you.
+In order to test SSO sign-ons for Identity Providers configured through the WorkOS.js embed, you'll need an account with an IdP. Get in touch with WorkOS, we're happy to provision you an account in our `foo-corp.com` Okta instance, and can walk through a full implentation with you.
 
 [![Book Time](./book-time.png)](https://calendly.com/workos-taylor/sso-onboarding)
