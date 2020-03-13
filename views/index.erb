@@ -20,10 +20,11 @@
           <label for="foo">Configure SSO</label>
           <span 
             class='workos-container'
+            data-prop-app-name='SaaS Co.'
             data-prop-domain='<%= @current_user.dig(:account, :domain) %>'
             data-prop-name='<%= @current_user.dig(:account, :name) %>'
             data-prop-project-id='<%= ENV['WORKOS_PROJECT_ID'] %>'
-            data-prop-publishable-key="<%= ENV['WORKOS_PUBLISHABLE_KEY'] %>"
+            data-prop-publishable-key='<%= ENV['WORKOS_PUBLISHABLE_KEY'] %>'
           ></span>
         </div>
 
