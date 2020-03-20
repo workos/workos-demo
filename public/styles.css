@@ -4,6 +4,12 @@ body {
   font-family: 'SF UI Display', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .pure-img-responsive {
   max-width: 100%;
   height: auto;
