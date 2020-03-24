@@ -1,39 +1,55 @@
-<div class='content'>
-  <form class="pure-form pure-form-aligned">
-    <fieldset>
-        <div class="pure-control-group">
-            <label for="email">Email Address</label>
-            <input id="email" type="email" value="<%= @current_user[:email] %>" placeholder="Email Address">
-        </div>
+<main class="content">
+  <fieldset class="form-info">
+    <h2 class="form-info__title">User Settings</h2>
 
-        <div class="pure-control-group">
-            <label for="password">New Password</label>
-            <input id="password" type="password">
-        </div>
+    <div class="form-field">
+      <div class="input-field">
+        <label class="label" for="name">Name</label>
+        <input class="input" id="name" type="text" value="<%= @current_user[:name] %>" placeholder="John Smith" />
+      </div>
 
-        <div class="pure-control-group">
-          <label for="password">Confirm New Password</label>
-          <input id="password" type="password">
-        </div>
+      <div class="input-field">
+        <label class="label" for="password">New Password</label>
+        <input class="input" id="password" type="password" />
+      </div>
 
-        <div class="pure-control-group">
-          <label for="foo">Configure SSO</label>
-          <span 
-            class='workos-container'
-            data-prop-app-name='SaaS Co.'
-            data-prop-domain='<%= @current_user.dig(:account, :domain) %>'
-            data-prop-name='<%= @current_user.dig(:account, :name) %>'
-            data-prop-project-id='<%= ENV['WORKOS_PROJECT_ID'] %>'
-            data-prop-publishable-key='<%= ENV['WORKOS_PUBLISHABLE_KEY'] %>'
-          ></span>
-        </div>
+      <div class="input-field">
+        <label class="label" for="email">Email</label>
+        <input class="input" id="email" type="email" value="<%= @current_user[:email] %>" placeholder="user@foo-corp.com" >
+      </div>
 
-        <div class="pure-controls">
-          <button type="submit" class="pure-button pure-button-secondary">Save</button>
-        </div>
-    </fieldset>
-</form>
-</div>
+      <div class="input-field">
+        <label class="label" for="confirm_password">Repeat New Password</label>
+        <input class="input" id="confirm_password" type="password" />
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset class="form-info">
+    <h2 class="form-info__title">App Settings</h2>
+
+    <div class="form-field">
+      <div class="input-field">
+        <label class="label" for="domain">Custom domain</label>
+        <input class="input" id="domain" type="text" placeholder="foo-corp.cloudapp.com" />
+      </div>
+
+      <div class="input-field">
+        <label class="label">Single Sign-On</label>
+
+        <span
+          class='workos-container'
+          data-prop-app-name='SaaS Co.'
+          data-prop-domain='<%= @current_user.dig(:account, :domain) %>'
+          data-prop-name='<%= @current_user.dig(:account, :name) %>'
+          data-prop-project-id='<%= ENV['WORKOS_PROJECT_ID'] %>'
+          data-prop-publishable-key='<%= ENV['WORKOS_PUBLISHABLE_KEY'] %>'
+        ></span>
+      </div>
+    </div>
+  </fieldset>
+</main>
+
 <script type='text/javascript'>
   document.addEventListener('workos:providerLinked', function (event){
     console.log(event.detail)
