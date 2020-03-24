@@ -1,260 +1,138 @@
-body {
-  color: #777;
-  background-color: #f7f7f7;
-  font-family: 'SF UI Display', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
-}
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-.pure-img-responsive {
-  max-width: 100%;
-  height: auto;
+body {
+  background-color: #fff;
+  color: #373737;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  display: grid;
+  grid-template-columns: 315px auto;
 }
 
-/*
-Add transition to containers so they can push in and out.
-*/
-#layout,
-#menu,
-.menu-link {
-  -webkit-transition: all 0.2s ease-out;
-  -moz-transition: all 0.2s ease-out;
-  -ms-transition: all 0.2s ease-out;
-  -o-transition: all 0.2s ease-out;
-  transition: all 0.2s ease-out;
+.sidebar {
+  display: grid;
+  grid-template-columns: 75px 240px;
+  height: 100vh;
 }
 
-/*
-This is the parent `<div>` that contains the menu and the content area.
-*/
-#layout {
-  position: relative;
-  left: 0;
-  padding-left: 0;
+.navigation {
+  margin-top: 48px;
 }
-  #layout.active #menu {
-      left: 220px;
-      width: 220px;
-  }
 
-  #layout.active .menu-link {
-      left: 220px;
-  }
-/*
-The content `<div>` is where all your content goes.
-*/
+.sidebar-menu {
+  background-color: #f6f4f4;
+}
+
+.sidebar-header {
+  padding: 16px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sidebar-header__title {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+.menu {
+  background: #fff;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+  height: 40px;
+  width: calc(100% - 24px);
+  margin-left: 12px;
+}
+
+.list {
+  margin-top: 48px;
+}
+
+.item {
+  list-style: none;
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 44px;
+}
+
+.channel {
+  padding-left: 6px;
+  padding-right: 12px;
+  margin-bottom: 12px;
+  border-left: 6px solid transparent;
+}
+
+.channel--active {
+  border-color: #373737;
+}
+
+.channel-item {
+  display: block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.channel-item--dark {
+  background-color: #616165;
+}
+
+.channel-item--light {
+  background-color: #c4c4c4;
+}
+
+.channel-item--default {
+  background-color: #929292;
+}
+
+.channel-item--lighter {
+  background-color: #dcdcdc;
+}
+
 .content {
-  margin: 0 auto;
-  padding: 0 2em;
-  max-width: 800px;
-  margin-bottom: 50px;
-  line-height: 1.6em;
+  padding: 72px 40px;
 }
 
-.header {
-   margin: 0;
-   color: #5c5c5c;
-   text-align: center;
-   padding: 2.5em 2em 0;
-   border-bottom: 1px solid #eee;
-}
-  .header h1 {
-      margin: 0.2em 0;
-      font-size: 3em;
-      font-weight: 300;
-  }
-   .header h2 {
-      font-weight: 300;
-      color: #ccc;
-      padding: 0;
-      margin-top: 0;
-  }
-
-.content-subhead {
-  margin: 50px 0 20px 0;
-  font-weight: 300;
-  color: #888;
+.form-info {
+  margin-bottom: 72px;
+  border: none;
 }
 
-
-
-/*
-The `#menu` `<div>` is the parent `<div>` that contains the `.pure-menu` that
-appears on the left side of the page.
-*/
-
-#menu {
-  margin-left: -220px; /* "#menu" width */
-  width: 220px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  z-index: 1000; /* so the menu or its navicon stays above all content */
-  background: #eaeaea;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-}
-  /*
-  All anchors inside the menu should be styled like this.
-  */
-  #menu a {
-      color: #999;
-      border: none;
-      padding: 0.6em 0 0.6em 0.6em;
-  }
-
-  /*
-  Remove all background/borders, since we are applying them to #menu.
-  */
-   #menu .pure-menu,
-   #menu .pure-menu ul {
-      border: none;
-      background: transparent;
-  }
-
-  /* /*
-  Add that light border to separate items into groups.
-  */
-  #menu .pure-menu ul,
-  #menu .pure-menu .menu-item-divided {
-      border-top: 1px solid #5c5c5c;
-  }
-      /*
-      Change color of the anchor links on hover/focus.
-      */
-      #menu .pure-menu li a:hover,
-      #menu .pure-menu li a:focus {
-          background: #5c5c5c;
-      }
-
-  /*
-  This styles the selected menu item `<li>`.
-  */
-  #menu .pure-menu-selected{
-      background: #5c5c5c;
-  }
-      /*
-      This styles a link within a selected menu item `<li>`.
-      */
-      #menu .pure-menu-selected a {
-          color: #eaeaea;
-      }
-
-  /*
-  This styles the menu heading.
-  */
-  #menu .pure-menu-heading {
-      font-size: 110%;
-      color: #2d2d2d;
-      margin: 0;
-  } */
-
-/* -- Dynamic Button For Responsive Menu -------------------------------------*/
-
-/*
-The button to open/close the Menu is custom-made and not part of Pure. Here's
-how it works:
-*/
-
-/*
-`.menu-link` represents the responsive menu toggle that shows/hides on
-small screens.
-*/
-.menu-link {
-  position: fixed;
-  display: block; /* show this only on small screens */
-  top: 0;
-  left: 0; /* "#menu width" */
-  background: #000;
-  background: rgba(0,0,0,0.7);
-  font-size: 10px; /* change this value to increase/decrease button size */
-  z-index: 10;
-  width: 2em;
-  height: auto;
-  padding: 2.1em 1.6em;
+.form-info__title {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 29px;
+  margin-bottom: 24px;
 }
 
-  .menu-link:hover,
-  .menu-link:focus {
-      background: #000;
-  }
-
-  .menu-link span {
-      position: relative;
-      display: block;
-  }
-
-  .menu-link span,
-  .menu-link span:before,
-  .menu-link span:after {
-      background-color: #2d2d2d;
-      width: 100%;
-      height: 0.2em;
-  }
-
-      .menu-link span:before,
-      .menu-link span:after {
-          position: absolute;
-          margin-top: -0.6em;
-          content: " ";
-      }
-
-      .menu-link span:after {
-          margin-top: 0.6em;
-      }
-
-
-/* -- Responsive Styles (Media Queries) ------------------------------------- */
-
-/*
-Hides the menu at `48em`, but modify this based on your app's needs.
-*/
-@media (min-width: 48em) {
-
-  .header,
-  .content {
-      padding-left: 2em;
-      padding-right: 2em;
-      margin-top: 200px;
-  }
-
-  #layout {
-      padding-left: 220px; /* left col width "#menu" */
-      left: 0;
-  }
-  #menu {
-      left: 220px;
-  }
-
-  .menu-link {
-      position: fixed;
-      left: 220px;
-      display: none;
-  }
-
-  #layout.active .menu-link {
-      left: 220px;
-  }
+.form-field {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 80px;
+  grid-row-gap: 20px;
 }
 
-@media (max-width: 48em) {
-  /* Only apply this when the window is small. Otherwise, the following
-  case results in extra padding on the left:
-      * Make the window small.
-      * Tap the menu to trigger the active state.
-      * Make the window large again.
-  */
-  #layout.active {
-      position: relative;
-      left: 220px;
-  }
+.label {
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 18px;
+  display: inline-block;
+  margin-bottom: 8px;
 }
 
-.workos-container{
+.input {
+  font-size: 15px;
+  line-height: 18px;
+  border-radius: 4px;
+  border: 1px solid #e6e4e4;
+  padding: 8px;
   width: 100%;
+  display: block;
+}
+
+.workos-container {
+  display: block;
 }
