@@ -3,6 +3,7 @@ GEM
   specs:
     backports (3.17.0)
     concurrent-ruby (1.1.6)
+    dotenv (2.7.5)
     faker (2.10.2)
       i18n (>= 1.6, < 2)
     i18n (1.8.2)
@@ -36,6 +37,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  dotenv
   faker
   rack-ssl-enforcer
   sinatra

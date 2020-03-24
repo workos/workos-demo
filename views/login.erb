@@ -1,0 +1,18 @@
+<main class="content">
+  <% if @current_user %>
+    <p>The current user's profile is</p>
+    <pre><%= @current_user %></pre>
+    <a class='button' href='/logout'>Sign Out</a>
+  <% else %>
+    <form action='/sso/login' method='post'>
+      <h2 class="form-info__title">Sign in to Cloud App</h2>
+        <div class="form-field">
+          <div class="input-field">
+            <label class="label" for="email">Email</label>
+            <input class="input" name="email" value="<%= @email %>" id="email" type="email" placeholder="user@foo-corp.com" >
+          </div>
+        </div>
+      <button type="submit">Continue</button>
+    </form>
+  <% end %>
+</main>

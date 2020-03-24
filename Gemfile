@@ -7,3 +7,7 @@ gem 'rack-ssl-enforcer'
 gem 'sinatra'
 gem 'sinatra-contrib'
 gem 'workos'
+
+group :development, :test do
+  gem 'dotenv'
+end
