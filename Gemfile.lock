@@ -13,6 +13,7 @@ GEM
     rack (2.2.2)
     rack-protection (2.0.8.1)
       rack
+    rack-ssl-enforcer (0.2.9)
     ruby2_keywords (0.0.2)
     sinatra (2.0.8.1)
       mustermann (~> 1.0)
@@ -26,9 +27,9 @@ GEM
       rack-protection (= 2.0.8.1)
       sinatra (= 2.0.8.1)
       tilt (~> 2.0)
-    sorbet-runtime (0.5.5434)
+    sorbet-runtime (0.5.5460)
     tilt (2.0.10)
-    workos (0.1.1)
+    workos (0.2.1)
       sorbet-runtime (~> 0.5)
 
 PLATFORMS
@@ -36,9 +37,10 @@ PLATFORMS
 
 DEPENDENCIES
   faker
+  rack-ssl-enforcer
   sinatra
   sinatra-contrib
-  workos (= 0.1.1)
+  workos
 
 BUNDLED WITH
    2.1.2

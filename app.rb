@@ -1,10 +1,21 @@
 # frozen_string_literal: true
 
 require 'sinatra'
-require "sinatra/reloader" if development?
+require 'sinatra/reloader' if development?
 require 'workos'
+require 'rack/ssl-enforcer'
 require 'securerandom'
 require 'faker'
+
+use Rack::SslEnforcer if production?
+set :session_secret, ENV['SESSION_SECRET'] || SecureRandom.hex(32)
+
+use(Rack::Session::Cookie, 
+  :key => '_rack_session',
+  :path => '/',
+  :expire_after => 2592000,
+  :secret => settings.session_secret
+)
 
 get '/' do
   company_name = params['company'] || Faker::Internet.domain_word

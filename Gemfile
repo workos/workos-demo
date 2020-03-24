@@ -2,7 +2,8 @@
 
 source 'https://rubygems.org'
 
+gem 'faker'
+gem 'rack-ssl-enforcer'
 gem 'sinatra'
 gem 'sinatra-contrib'
-gem 'workos', '0.1.1'
-gem 'faker'
+gem 'workos'
