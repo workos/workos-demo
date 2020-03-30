@@ -20,7 +20,6 @@ Then add an element to your DOM with the class `workos-container`
 ```html
 <div 
   class='workos-container'
-  data-prop-project-id='WORKOS_PROJECT_ID'
   data-prop-publishable-key='WORKOS_PUBLISHABLE_KEY'
   data-prop-domain='CURRENT_USER_DOMAIN'
   data-prop-name='CURRENT_USER_COMPANY_NAME'

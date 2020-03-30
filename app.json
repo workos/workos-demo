@@ -8,9 +8,6 @@
     },
     "WORKOS_PUBLISHABLE_KEY": {
       "description": "Your WorkOS Publishable API Key from the WorkOS dashboard"
-    },
-    "WORKOS_PROJECT_ID": {
-      "description": "Your WorkOS Project ID from the WorkOS dashboard"
     }
   }
 }
