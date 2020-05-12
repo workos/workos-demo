@@ -36,7 +36,7 @@ get '/' do
 end
 
 post '/confirm' do
-  WorkOS::SSO.promote_draft_connection(
-    token: params['token'],
+  WorkOS::SSO.create_connection(
+    source: params['token'],
   )
 end
