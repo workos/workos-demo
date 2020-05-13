@@ -64,8 +64,8 @@ Finally, using one of the WorkOS SDK's, confirm the pending IdP configuration wi
 
 ```ruby
 post '/confirm' do
-  WorkOS::SSO.promote_draft_connection(
-    token: params['token'],
+  WorkOS::SSO.create_connection(
+    source: params['token'],
   )
 end
 ```

@@ -27,9 +27,9 @@ GEM
       rack-protection (= 2.0.8.1)
       sinatra (= 2.0.8.1)
       tilt (~> 2.0)
-    sorbet-runtime (0.5.5460)
+    sorbet-runtime (0.5.5610)
     tilt (2.0.10)
-    workos (0.2.1)
+    workos (0.3.1)
       sorbet-runtime (~> 0.5)
 
 PLATFORMS
