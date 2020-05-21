@@ -32,7 +32,7 @@ get '/' do
   }
 
   @theme = {
-    company: params['company'] || 'Cloud App',
+    org: params['org'] || 'Cloud App',
     sidebar_color: params['sidebar_color'] || 'f6f4f4',
     bg_color: params['bg_color'] || 'fff'
   }
