@@ -4,8 +4,8 @@
     <title>WorkOS.js Demo</title>
     <link rel="stylesheet" type="text/css" href="<%= url("/styles.css")%>">
   </head>
-  
-  <body>
+
+  <body style="background-color: #<%= @theme[:bg_color] %>;">
     <aside class="sidebar">
       <nav class="navigation">
         <ul>
@@ -19,9 +19,9 @@
         </ul>
       </nav>
 
-      <div class="sidebar-menu">
+      <div class="sidebar-menu" style="background-color: #<%= @theme[:sidebar_color] %>;">
         <header class="sidebar-header">
-          <h1 class="sidebar-header__title">Cloud App</h1>
+          <h1 class="sidebar-header__title"><%= @theme[:company] %></h1>
 
           <svg width="16" height="4" viewBox="0 0 16 4" fill="none">
             <circle cx="8" cy="2" r="2" fill="#373737"/>
@@ -31,7 +31,7 @@
 
         </header>
 
-        <div class="menu"></div>
+        <div class="menu" style="background-color: #<%= @theme[:bg_color] %>;"></div>
 
         <ul class="list">
           <li class="item" />
@@ -41,7 +41,7 @@
         </ul>
       </div>
     </aside>
-    
+
     <%= yield %>
 
     <script type="text/javascript" src="https://js.workos.com/v1-beta"></script>
