@@ -39,7 +39,7 @@
 
         <span
           class='workos-container'
-          data-prop-app-name='Enterprise Co.'
+          data-prop-app-name='<%= @theme[:org] %>'
           data-prop-domain='<%= @current_user.dig(:account, :domain) %>'
           data-prop-name='<%= @current_user.dig(:account, :name) %>'
           data-prop-publishable-key='<%= ENV['WORKOS_PUBLISHABLE_KEY'] %>'
