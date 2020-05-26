@@ -10,7 +10,7 @@ require 'faker'
 use Rack::SslEnforcer if production?
 set :session_secret, ENV['SESSION_SECRET'] || SecureRandom.hex(32)
 
-use(Rack::Session::Cookie, 
+use(Rack::Session::Cookie,
   :key => '_rack_session',
   :path => '/',
   :expire_after => 2592000,
@@ -30,6 +30,14 @@ get '/' do
       domain: domain,
     }
   }
+
+  @theme = {
+    org: params['org'] || 'Cloud App',
+    sidebar_color: params['sidebar_color'] || 'f6f4f4',
+    bg_color: params['bg_color'] || 'fff'
+  }
+
+  puts @theme
 
   puts @current_user
   erb :index, :layout => :layout

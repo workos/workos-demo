@@ -5,7 +5,6 @@
 }
 
 body {
-  background-color: #fff;
   color: #373737;
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   display: grid;
@@ -22,10 +21,6 @@ body {
   margin-top: 48px;
 }
 
-.sidebar-menu {
-  background-color: #f6f4f4;
-}
-
 .sidebar-header {
   padding: 16px 12px;
   display: flex;
@@ -40,7 +35,6 @@ body {
 }
 
 .menu {
-  background: #fff;
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.08);
   border-radius: 4px;
   height: 40px;
