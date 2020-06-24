@@ -18,7 +18,7 @@ WorkOS.js is available as a Javascript embed via the WorkOS CDN. WorkOS is alway
 Then add an element to your DOM with the class `workos-container`
 
 ```html
-<div 
+<div
   class='workos-container'
   data-prop-publishable-key='WORKOS_PUBLISHABLE_KEY'
   data-prop-domain='CURRENT_USER_DOMAIN'
@@ -70,7 +70,7 @@ post '/confirm' do
 end
 ```
 
-See the relevant documentation in our (Node)[https://github.com/workos-inc/workos-node], (Go)[https://github.com/workos-inc/workos-go], (Python)[https://github.com/workos-inc/workos-python] or (Ruby)[https://github.com/workos-inc/workos-ruby] SDK.
+See the relevant documentation for our [Node](https://github.com/workos-inc/workos-node), [Go](https://github.com/workos-inc/workos-go), [Python](https://github.com/workos-inc/workos-python), [Ruby](https://github.com/workos-inc/workos-ruby) or [PHP](https://github.com/workos-inc/workos-php) SDKs.
 
 ### Try it Yourself
 

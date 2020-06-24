@@ -6,41 +6,62 @@
   </head>
 
   <body style="background-color: #<%= @theme[:bg_color] %>;">
-    <aside class="sidebar">
-      <nav class="navigation">
-        <ul>
-          <li class="channel"><span class="channel-item channel-item--dark" /></li>
-          <li class="channel"><span class="channel-item channel-item--light" /></li>
-          <li class="channel"><span class="channel-item channel-item--default" /></li>
-          <li class="channel"><span class="channel-item channel-item--lighter" /></li>
-          <li class="channel"><span class="channel-item channel-item--dark" /></li>
-          <li class="channel"><span class="channel-item channel-item--default" /></li>
-          <li class="channel"><span class="channel-item channel-item--lighter" /></li>
-        </ul>
-      </nav>
+    <aside class="sidebar" style="background-color: #<%= @theme[:sidebar_color] %>;">
+      <header class="sidebar-header">
+        <span class="sidebar-header__logo">&#10024;</span>
+        <h1 class="sidebar-header__title"><%= @theme[:org] %></h1>
+      </header>
 
-      <div class="sidebar-menu" style="background-color: #<%= @theme[:sidebar_color] %>;">
-        <header class="sidebar-header">
-          <h1 class="sidebar-header__title"><%= @theme[:org] %></h1>
-
-          <svg width="16" height="4" viewBox="0 0 16 4" fill="none">
-            <circle cx="8" cy="2" r="2" fill="#373737"/>
-            <circle cx="14" cy="2" r="2" fill="#373737"/>
-            <circle cx="2" cy="2" r="2" fill="#373737"/>
-          </svg>
-
-        </header>
-
-        <div class="menu" style="background-color: #<%= @theme[:bg_color] %>;"></div>
-
-        <ul class="list">
-          <li class="item" />
-          <li class="item" />
-          <li class="item" />
-          <li class="item" />
-        </ul>
+      <div class="menu" style="background-color: #<%= @theme[:bg_color] %>;">
+        <div class="menu-item menu-item__selected">
+          <svg class="menu-item__icon settings-icon"><use stroke="#373737" xlink:href="#settings"></svg>
+          <span>Settings and Team</span>
+        </div>
+        <div class="menu-item">
+          <svg class="menu-item__icon home-icon"><use stroke="#59c197" xlink:href="#home"></svg>
+          <span>Home</span>
+        </div>
+        <div class="menu-item">
+          <svg class="menu-item__icon"><use stroke="#83b5db" xlink:href="#circle"></svg>
+          <span>...</span>
+        </div>
+        <div class="menu-item">
+          <svg class="menu-item__icon"><use stroke="#f2ca7a" xlink:href="#circle"></svg>
+          <span>...</span>
+        </div>
+        <div class="menu-item">
+          <svg class="menu-item__icon"><use stroke="#e08073" xlink:href="#circle"></svg>
+          <span>...</span>
+        </div>
       </div>
+
     </aside>
+
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      display="none"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      stroke-width="1"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <symbol id="settings">
+        <circle cx="12" cy="12" r="3" />
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
+      </symbol>
+
+      <symbol id="home">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+        <polyline points="9 22 9 12 15 12 15 22" />
+      </symbol>
+
+      <symbol id="circle">
+        <circle cx="12" cy="12" r="10" />
+      </symbol>
+
+    </svg>
 
     <%= yield %>
 

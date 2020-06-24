@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap);
+
 * {
   margin: 0;
   padding: 0;
@@ -6,84 +8,59 @@
 
 body {
   color: #373737;
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Open Sans', sans-serif;
   display: grid;
-  grid-template-columns: 315px auto;
-}
-
-.sidebar {
-  display: grid;
-  grid-template-columns: 75px 240px;
+  grid-template-columns: 240px auto;
   height: 100vh;
 }
 
-.navigation {
-  margin-top: 48px;
+.sidebar {
+  border-right: 1px solid #f3f3f3;
 }
 
 .sidebar-header {
-  padding: 16px 12px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  padding: 16px 12px;
+  border-bottom: 1px solid #f3f3f3;
+}
+
+.sidebar-header__logo {
+  font-size: 20px;
+  background-color: #383838;
+  padding: 2px 6px;
+  border-radius: 8px;
+  margin-right: 8px;
 }
 
 .sidebar-header__title {
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 29px;
+  font-weight: 600;
+  font-size: 18px;
 }
 
 .menu {
+  padding: 16px 12px;
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.menu-item {
+  padding: 10px 8px;
+  display: flex;
+  align-items: center;
+}
+
+.menu-item__selected {
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.08);
   border-radius: 4px;
-  height: 40px;
-  width: calc(100% - 24px);
-  margin-left: 12px;
 }
 
-.list {
-  margin-top: 48px;
-}
-
-.item {
-  list-style: none;
-  border-bottom: 1px solid #e0e0e0;
-  margin-bottom: 44px;
-}
-
-.channel {
-  padding-left: 6px;
-  padding-right: 12px;
-  margin-bottom: 12px;
-  border-left: 6px solid transparent;
-}
-
-.channel--active {
-  border-color: #373737;
-}
-
-.channel-item {
-  display: block;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-}
-
-.channel-item--dark {
-  background-color: #616165;
-}
-
-.channel-item--light {
-  background-color: #c4c4c4;
-}
-
-.channel-item--default {
-  background-color: #929292;
-}
-
-.channel-item--lighter {
-  background-color: #dcdcdc;
+.menu-item__icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+  stroke: #373737;
+  fill: none;
 }
 
 .content {
@@ -100,6 +77,8 @@ body {
   font-size: 24px;
   line-height: 29px;
   margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #d0d0ce;
 }
 
 .form-field {
@@ -125,6 +104,7 @@ body {
   padding: 8px;
   width: 100%;
   display: block;
+  background-color: #fafbfc;
 }
 
 .workos-container {
