@@ -32,7 +32,7 @@ get '/' do
   }
 
   @theme = {
-    org: params['org'] || 'WorkOS.js',
+    org: params['org'] || 'Cloud App',
     sidebar_color: params['sidebar_color'] || 'fff',
     bg_color: params['bg_color'] || 'fff'
   }
