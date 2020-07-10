@@ -80,4 +80,4 @@ Ready to play with the WorkOS.js embed to see how it works? Go ahead and deploy 
 
 In order to test SSO sign-ons for Identity Providers configured through the WorkOS.js embed, you'll need an account with an IdP. Get in touch with WorkOS, we're happy to provision you an account in our `foo-corp.com` Okta instance, and can walk through a full implentation with you.
 
-[![Book Time](./book-time.png)](https://calendly.com/workos-taylor/sso-onboarding)
+[![Book Time](./book-time.png)](https://calendly.com/workos-scheduling/demo)
