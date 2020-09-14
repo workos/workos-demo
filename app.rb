@@ -10,6 +10,8 @@ require 'faker'
 use Rack::SslEnforcer if production?
 set :session_secret, ENV['SESSION_SECRET'] || SecureRandom.hex(32)
 
+WorkOS.key = ENV['WORKOS_KEY']
+
 use(Rack::Session::Cookie,
   :key => '_rack_session',
   :path => '/',
@@ -43,8 +45,18 @@ get '/' do
   erb :index, :layout => :layout
 end
 
-post '/confirm' do
-  WorkOS::SSO.create_connection(
-    source: params['token'],
+post '/portal' do
+  organization_name = "portal-demo-#{SecureRandom.uuid}"
+
+  organization = WorkOS::Portal.create_organization(
+    domains: ["#{organization_name}.com"],
+    name: organization_name,
   )
+
+  portal_link = WorkOS::Portal.generate_link(
+    intent: 'sso',
+    organization: organization.id
+  )
+
+  redirect portal_link
 end
