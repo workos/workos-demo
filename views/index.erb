@@ -1,56 +1,41 @@
 <main class="content">
-  <fieldset class="form-info">
-    <h2 class="form-info__title">User Settings</h2>
+  <form action="/portal" method="POST">
 
-    <div class="form-field">
-      <div class="input-field">
-        <label class="label" for="name">Full name</label>
-        <input class="input" id="name" type="text" value="<%= @current_user[:name] %>" placeholder="John Smith" />
-      </div>
+    <fieldset class="form-info">
+      <h2 class="form-info__title">User Settings</h2>
 
-      <div class="input-field">
-        <label class="label" for="password">New password</label>
-        <input class="input" id="password" type="password" />
-      </div>
-
-      <div class="input-field">
-        <label class="label" for="email">Email address</label>
-        <input class="input" id="email" type="email" value="<%= @current_user[:email] %>" placeholder="user@foo-corp.com" >
-      </div>
-
-      <div class="input-field">
-        <label class="label" for="confirm_password">Confirm new password</label>
-        <input class="input" id="confirm_password" type="password" />
-      </div>
-    </div>
-  </fieldset>
-
-  <fieldset class="form-info">
-    <h2 class="form-info__title">Admin Settings</h2>
-
-    <form action="/portal" method="POST">
       <div class="form-field">
         <div class="input-field">
-          <label class="label" for="domain">Custom domain</label>
-          <input class="input" id="domain" type="text" placeholder="foo-corp.cloudapp.com" />
+          <label class="label" for="name">Full name</label>
+          <input class="input" id="name" type="text" value="<%= @current_user[:name] %>" placeholder="John Smith" />
         </div>
 
         <div class="input-field">
-          <label class="label">Single Sign-On</label>
+          <label class="label" for="password">New password</label>
+          <input class="input" id="password" type="password" />
+        </div>
 
-          <button class="button-sso" type="submit">Configure SSO</button>
+        <div class="input-field">
+          <label class="label" for="email">Email address</label>
+          <input class="input" id="email" type="email" name="email" readonly value="<%= @current_user[:email] %>">
+        </div>
+
+        <div class="input-field">
+          <label class="label" for="confirm_password">Confirm new password</label>
+          <input class="input" id="confirm_password" type="password" />
         </div>
       </div>
-    </form>
-  </fieldset>
+    </fieldset>
+
+    <fieldset class="form-info">
+      <h2 class="form-info__title">Admin Settings</h2>
+          <div class="input-field">
+            <label class="label">Single Sign-On</label>
+
+            <button class="button-sso" type="submit">Configure SSO</button>
+          </div>
+        </div>
+    </fieldset>
+  </form>
 </main>
 
-<script type='text/javascript'>
-  document.addEventListener('workos:providerLinked', function (event){
-    console.log(event.detail)
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", '/confirm', true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.send("token=" + event.detail.token);
-  })
-</script>

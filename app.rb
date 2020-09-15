@@ -20,17 +20,12 @@ use(Rack::Session::Cookie,
 )
 
 get '/' do
-  company_name = params['company'] || Faker::Internet.domain_word
+  company_name = params['company'] || "demo-#{Time.now.to_i}"
   domain = company_name + '.com'
+
   @current_user = {
-    id: SecureRandom.uuid,
-    email: "demo@#{domain}",
+    email: "user@#{domain}",
     name: 'Demo User',
-    account: {
-      id: SecureRandom.uuid,
-      name: company_name,
-      domain: domain,
-    }
   }
 
   @theme = {
@@ -39,18 +34,15 @@ get '/' do
     bg_color: params['bg_color'] || 'fff'
   }
 
-  puts @theme
-
-  puts @current_user
   erb :index, :layout => :layout
 end
 
 post '/portal' do
-  organization_name = "portal-demo-#{SecureRandom.uuid}"
+  domain = params[:email].partition('@').last
 
   organization = WorkOS::Portal.create_organization(
-    domains: ["#{organization_name}.com"],
-    name: organization_name,
+    domains: [domain],
+    name: domain.partition('.').first,
   )
 
   portal_link = WorkOS::Portal.generate_link(
