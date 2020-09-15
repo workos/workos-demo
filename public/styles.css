@@ -8,7 +8,7 @@
 
 body {
   color: #373737;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   display: grid;
   grid-template-columns: 240px auto;
   height: 100vh;
@@ -89,10 +89,10 @@ body {
 }
 
 .label {
+  display: inline-block;
   font-weight: 600;
   font-size: 15px;
   line-height: 18px;
-  display: inline-block;
   margin-bottom: 8px;
 }
 
@@ -109,4 +109,14 @@ body {
 
 .workos-container {
   display: block;
+}
+
+button {
+  display: block;
+  outline: none;
+  border: none;
+  background-color: #373737;
+  color: #fff;
+  border-radius: 2px;
+  padding: 8px;
 }
