@@ -44,7 +44,7 @@ post '/portal' do
    domains: [domain],
   )
 
-  if organizations.data.empty
+  if organizations.data.empty?
     organization = WorkOS::Portal.create_organization(
      domains: [domain],
      name: domain.partition('.').first,
@@ -61,7 +61,7 @@ post '/portal' do
 
     portal_link = WorkOS::Portal.generate_link(
      intent: 'sso',
-     organization: organization['id']
+     organization: organization.id
     )
 
     redirect portal_link
