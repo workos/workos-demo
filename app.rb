@@ -40,15 +40,30 @@ end
 post '/portal' do
   domain = params[:email].partition('@').last
 
-  organization = WorkOS::Portal.create_organization(
-    domains: [domain],
-    name: domain.partition('.').first,
+  organizations = WorkOS::Portal.list_organizations(
+   domains: [domain],
   )
 
-  portal_link = WorkOS::Portal.generate_link(
-    intent: 'sso',
-    organization: organization.id
-  )
+  if organizations.data.empty?
+    organization = WorkOS::Portal.create_organization(
+     domains: [domain],
+     name: domain.partition('.').first,
+    )
 
-  redirect portal_link
+    portal_link = WorkOS::Portal.generate_link(
+     intent: 'sso',
+     organization: organization.id
+    )
+
+    redirect portal_link
+  else
+    organization = organizations.data.first
+
+    portal_link = WorkOS::Portal.generate_link(
+     intent: 'sso',
+     organization: organization.id
+    )
+
+    redirect portal_link
+  end
 end
