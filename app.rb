@@ -2,10 +2,14 @@
 
 require 'sinatra'
 require 'sinatra/reloader' if development?
-require 'workos'
+require 'dotenv/load'
 require 'rack/ssl-enforcer'
 require 'securerandom'
 require 'faker'
+require 'jwt'
+require 'workos'
+
+FIVE_MINUTES_IN_SECONDS = 5 * 60
 
 use Rack::SslEnforcer if production?
 set :session_secret, ENV['SESSION_SECRET'] || SecureRandom.hex(32)
@@ -23,6 +27,16 @@ get '/' do
   company_name = params['company'] || "demo-#{Time.now.to_i}"
   domain = company_name + '.com'
 
+  organizations = WorkOS::Portal.list_organizations(
+    domains: [domain],
+  )
+
+  @organization = organizations&.data&.first ||
+    WorkOS::Portal.create_organization(
+      domains: [domain],
+      name: domain.partition('.').first,
+    )
+
   @current_user = {
     email: "user@#{domain}",
     name: 'Demo User',
@@ -38,32 +52,13 @@ get '/' do
 end
 
 post '/portal' do
-  domain = params[:email].partition('@').last
+  payload = {
+    intent: 'sso',
+    organization: params[:organization],
+    exp: Time.now.to_i + FIVE_MINUTES_IN_SECONDS
+  }
 
-  organizations = WorkOS::Portal.list_organizations(
-   domains: [domain],
-  )
+  token = JWT.encode payload, WorkOS.key, 'HS256'
 
-  if organizations.data.empty?
-    organization = WorkOS::Portal.create_organization(
-     domains: [domain],
-     name: domain.partition('.').first,
-    )
-
-    portal_link = WorkOS::Portal.generate_link(
-     intent: 'sso',
-     organization: organization.id
-    )
-
-    redirect portal_link
-  else
-    organization = organizations.data.first
-
-    portal_link = WorkOS::Portal.generate_link(
-     intent: 'sso',
-     organization: organization.id
-    )
-
-    redirect portal_link
-  end
+  redirect "https://#{ENV['WORKOS_ADMIN_PORTAL_HOSTNAME']}/?token=#{token}"
 end
