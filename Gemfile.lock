@@ -3,10 +3,12 @@ GEM
   specs:
     backports (3.17.0)
     concurrent-ruby (1.1.6)
+    dotenv (2.7.6)
     faker (2.10.2)
       i18n (>= 1.6, < 2)
     i18n (1.8.2)
       concurrent-ruby (~> 1.0)
+    jwt (2.2.2)
     multi_json (1.14.1)
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
@@ -36,7 +38,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  dotenv
   faker
+  jwt
   rack-ssl-enforcer
   sinatra
   sinatra-contrib

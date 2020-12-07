@@ -2,7 +2,9 @@
 
 source 'https://rubygems.org'
 
+gem 'dotenv'
 gem 'faker'
+gem 'jwt'
 gem 'rack-ssl-enforcer'
 gem 'sinatra'
 gem 'sinatra-contrib'

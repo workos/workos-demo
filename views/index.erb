@@ -32,6 +32,8 @@
           <div class="input-field">
             <label class="label">Single Sign-On</label>
 
+            <input hidden class="hidden-field" id="organization" name="organization" type="text" readonly value="<%= @organization.id %>">
+
             <button class="button-sso" type="submit">Configure SSO</button>
           </div>
         </div>
