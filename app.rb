@@ -55,7 +55,8 @@ post '/portal' do
   payload = {
     intent: 'sso',
     organization: params[:organization],
-    exp: Time.now.to_i + FIVE_MINUTES_IN_SECONDS
+    exp: Time.now.to_i + FIVE_MINUTES_IN_SECONDS,
+    iat: Time.now.to_i
   }
 
   token = JWT.encode payload, WorkOS.key, 'HS256'
