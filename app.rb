@@ -55,6 +55,7 @@ post '/portal' do
   payload = {
     intent: 'sso',
     organization: params[:organization],
+    scenario: params[:scenario],
     exp: Time.now.to_i + FIVE_MINUTES_IN_SECONDS,
     iat: Time.now.to_i
   }
