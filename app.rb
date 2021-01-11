@@ -57,7 +57,7 @@ post '/portal' do
     organization: params[:organization],
     scenario: params[:scenario],
     exp: Time.now.to_i + FIVE_MINUTES_IN_SECONDS,
-    iat: Time.now.to_i
+    started_at: (Time.now.to_f * 1000).to_i
   }
 
   token = JWT.encode payload, WorkOS.key, 'HS256'
