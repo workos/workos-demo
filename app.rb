@@ -37,11 +37,6 @@ get '/' do
       name: domain.partition('.').first,
     )
 
-  @current_user = {
-    email: "user@#{domain}",
-    name: 'Demo User',
-  }
-
   @theme = {
     org: params['org'] || 'Cloud App',
     sidebar_color: params['sidebar_color'] || 'fff',
