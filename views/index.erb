@@ -5,18 +5,37 @@
           <div class="input-field">
             <label class="label">Single Sign-On</label>
 
-            <input hidden class="hidden-field" id="organization" name="organization" type="text" readonly value="<%= @organization.id %>">
+            <input hidden class="hidden-field" id="organization-sso" name="organization" type="text" readonly value="<%= @organization.id %>">
+            <input hidden class="hidden-field" id="intent-sso" name="intent" type="text" readonly value="sso">
 
             <button class="button-sso" type="submit">Configure SSO</button>
           </div>
         </div>
     </fieldset>
   </form>
-  
+
   <form action="/portal" method="POST">
-    <input hidden class="hidden-field" id="organization" name="organization" type="text" readonly value="<%= @organization.id %>">
-    <input hidden class="hidden-field" id="scenario" name="scenario" type="text" readonly value="okta-invalid-attributes">
+    <input hidden class="hidden-field" id="organization-sso-invalid" name="organization" type="text" readonly value="<%= @organization.id %>">
+    <input hidden class="hidden-field" id="scenario-sso-invalid" name="scenario" type="text" readonly value="okta-invalid-attributes">
+    <input hidden class="hidden-field" id="intent-sso-invalid" name="intent" type="text" readonly value="sso">
+
     <button class="button-sso" type="submit">Configure SSO (Invalid Attributes)</button>
   </form>
+
+  <% if params[:dsync] %>
+    <form action="/portal" method="POST">
+      <fieldset class="form-info" style="margin-top: 20px;">
+
+        <div class="input-field">
+          <label class="label">Directory Sync</label>
+
+          <input hidden class="hidden-field" id="organization-dsync" name="organization" type="text" readonly value="<%= @organization.id %>">
+          <input hidden class="hidden-field" id="intent-dsync" name="intent" type="text" readonly value="dsync">
+
+          <button class="button-sso" type="submit">Configure Directory Sync</button>
+        </div>
+      </fieldset>
+    </form>
+  <% end %>
 </main>
 
