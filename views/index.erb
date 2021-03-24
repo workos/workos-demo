@@ -22,20 +22,18 @@
     <button class="button-sso" type="submit">Configure SSO (Invalid Attributes)</button>
   </form>
 
-  <% if params[:dsync] %>
-    <form action="/portal" method="POST">
-      <fieldset class="form-info" style="margin-top: 20px;">
+  <form action="/portal" method="POST">
+    <fieldset class="form-info" style="margin-top: 20px;">
 
-        <div class="input-field">
-          <label class="label">Directory Sync</label>
+      <div class="input-field">
+        <label class="label">Directory Sync</label>
 
-          <input hidden class="hidden-field" id="organization-dsync" name="organization" type="text" readonly value="<%= @organization.id %>">
-          <input hidden class="hidden-field" id="intent-dsync" name="intent" type="text" readonly value="dsync">
+        <input hidden class="hidden-field" id="organization-dsync" name="organization" type="text" readonly value="<%= @organization.id %>">
+        <input hidden class="hidden-field" id="intent-dsync" name="intent" type="text" readonly value="dsync">
 
-          <button class="button-sso" type="submit">Configure Directory Sync</button>
-        </div>
-      </fieldset>
-    </form>
-  <% end %>
+        <button class="button-sso" type="submit">Configure Directory Sync</button>
+      </div>
+    </fieldset>
+  </form>
 </main>
 
