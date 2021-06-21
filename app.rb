@@ -48,6 +48,7 @@ end
 
 post '/portal' do
   payload = {
+    key: ENV['WORKOS_KEY_ID'],
     intent: params[:intent],
     organization: params[:organization],
     scenario: params[:scenario],
