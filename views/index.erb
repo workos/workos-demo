@@ -35,5 +35,18 @@
       </div>
     </fieldset>
   </form>
-</main>
 
+  <form action="/portal" method="POST">
+    <fieldset class="form-info" style="margin-top: 20px;">
+
+      <div class="input-field">
+        <label class="label">Audit Logs</label>
+
+        <input hidden class="hidden-field" id="organization-audit-logs" name="organization" type="text" readonly value="<%= @organization.id %>">
+        <input hidden class="hidden-field" id="intent-audit-logs" name="intent" type="text" readonly value="audit_logs">
+
+        <button class="button-sso" type="submit">View Audit Logs</button>
+      </div>
+    </fieldset>
+  </form>
+</main>
