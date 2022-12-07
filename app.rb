@@ -48,30 +48,32 @@ end
 
 post '/portal' do
   if params[:intent] == "audit_logs"
-    ["user.signed_in", "user.signed_out"].each do |action|
-      WorkOS::AuditLogs.create_event(
-        organization: params[:organization],
-        event: {
-          action: action,
-          occurred_at: Time.now.iso8601(3),
-          actor: {
-            id: "user_01GBNJC3MX9ZZJW1FSTF4C5938",
-            name: Faker::Name.name,
-            type: "user"
-          },
-          targets: [
-            {
-              id: "team_01GBNJD4MKHVKJGEWK42JNMBGS",
-              type: "team"
+    Thread.new {
+      ["user.signed_in", "user.signed_out"].each do |action|
+        WorkOS::AuditLogs.create_event(
+          organization: params[:organization],
+          event: {
+            action: action,
+            occurred_at: Time.now.iso8601(3),
+            actor: {
+              id: "user_01GBNJC3MX9ZZJW1FSTF4C5938",
+              name: Faker::Name.name,
+              type: "user"
+            },
+            targets: [
+              {
+                id: "team_01GBNJD4MKHVKJGEWK42JNMBGS",
+                type: "team"
+              }
+            ],
+            context: {
+              location: request.ip,
+              user_agent: request.user_agent
             }
-          ],
-          context: {
-            location: request.ip,
-            user_agent: request.user_agent
           }
-        }
-      )
-    end
+        )
+      end
+     }
   end
 
   payload = {
