@@ -27,12 +27,12 @@ get '/' do
   company_name = params['company'] || "demo-#{Time.now.to_i}"
   domain = company_name + '.com'
 
-  organizations = WorkOS::Portal.list_organizations(
+  organizations = WorkOS::Organizations.list_organizations(
     domains: [domain],
   )
 
   @organization = organizations&.data&.first ||
-    WorkOS::Portal.create_organization(
+    WorkOS::Organizations.create_organization(
       domains: [domain],
       name: domain.partition('.').first,
     )
@@ -47,6 +47,33 @@ get '/' do
 end
 
 post '/portal' do
+  if params[:intent] == "audit_logs"
+    ["user.signed_in", "user.signed_out"].each do |action|
+      WorkOS::AuditLogs.create_event(
+        organization: params[:organization],
+        event: {
+          action: action,
+          occurred_at: Time.now.iso8601(3),
+          actor: {
+            id: "user_01GBNJC3MX9ZZJW1FSTF4C5938",
+            name: Faker::Name.name,
+            type: "user"
+          },
+          targets: [
+            {
+              id: "team_01GBNJD4MKHVKJGEWK42JNMBGS",
+              type: "team"
+            }
+          ],
+          context: {
+            location: request.ip,
+            user_agent: request.user_agent
+          }
+        }
+      )
+    end
+  end
+
   payload = {
     key: ENV['WORKOS_KEY_ID'],
     intent: params[:intent],
