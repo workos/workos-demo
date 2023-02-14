@@ -80,7 +80,6 @@ post '/portal' do
     key: ENV['WORKOS_KEY_ID'],
     intent: params[:intent],
     organization: params[:organization],
-    scenario: params[:scenario],
     exp: Time.now.to_i + FIVE_MINUTES_IN_SECONDS,
     started_at: (Time.now.to_f * 1000).to_i
   }
