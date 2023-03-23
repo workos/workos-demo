@@ -6,7 +6,6 @@ require 'dotenv/load'
 require 'rack/ssl-enforcer'
 require 'securerandom'
 require 'faker'
-require 'jwt'
 require 'workos'
 
 FIVE_MINUTES_IN_SECONDS = 5 * 60
@@ -76,15 +75,10 @@ post '/portal' do
      }
   end
 
-  payload = {
-    key: ENV['WORKOS_KEY_ID'],
-    intent: params[:intent],
+  adminPortalLink = WorkOS::Portal.generate_link(
     organization: params[:organization],
-    exp: Time.now.to_i + FIVE_MINUTES_IN_SECONDS,
-    started_at: (Time.now.to_f * 1000).to_i
-  }
+    intent: params[:intent]
+  )
 
-  token = JWT.encode payload, WorkOS.key, 'HS256'
-
-  redirect "https://#{ENV['WORKOS_ADMIN_PORTAL_HOSTNAME']}/?token=#{token}"
+  redirect adminPortalLink
 end
