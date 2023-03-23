@@ -6,7 +6,6 @@ require 'dotenv/load'
 require 'rack/ssl-enforcer'
 require 'securerandom'
 require 'faker'
-require 'jwt'
 require 'workos'
 
 FIVE_MINUTES_IN_SECONDS = 5 * 60
