@@ -36,4 +36,4 @@ Ready to test out the Admin Portal for yourself? Go ahead and deploy a version o
 
 In order to test SSO sign-ons for Identity Providers configured through the Admin Portal, you'll need an account with an IdP. Get in touch with WorkOS, we're happy to provision you an account in our `foo-corp.com` Okta instance, and can walk through a full implentation with you.
 
-[![Book Time](./book-time.png)](https://calendly.com/workos-scheduling/demo)
+[![Book Time](./book-time.png)](https://scheduler.default.com/workos/ae-team/workos-demo)
